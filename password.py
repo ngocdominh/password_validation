@@ -21,25 +21,14 @@ def pw_validation(passwd):
                 if (int(d[i][j]) == int(d[i][j+1]) - 1) and (int(d[i][j+1]) == int(d[i][j+2]) - 1):
                     print('Password must not contain 3 consecutive digits')
                     return False
-                # else:
-                #     print('Password is valid')
-                #     return True
+    return True    # when password meets all the conditions above and is valid
 
 
-# pw = input('Your password: ')
-#
-# pw_validation(pw)
-
-
-# still stuck at the last condition
-
-# while True:
-#     pw = input('Your password: ')
-#     if pw_validation(pw):
-#         # print('Password is valid')
-#         break
-#     else:
-#         pw = input('Your password: ')
+while True:
+    pw = input('Your password: ')
+    if pw_validation(pw) is True:
+        break
+print('Password is valid')
 
 # a = '33355@@F6678'
 # pw_validation(a)
