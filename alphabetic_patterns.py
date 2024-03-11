@@ -29,7 +29,7 @@ alp = string.ascii_lowercase
 
 for i in range(n-1, 0, -1):
     st = alp[i:n]
-    cct = "-".join(st[::-1] + st[1:n - i])
+    cct = "-".join(st[::-1] + st[1:n-i])
     ln = cct.center(4 * n - 3, "-")
     print(ln)
 
