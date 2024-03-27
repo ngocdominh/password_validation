@@ -17,46 +17,32 @@ url_dict = {}
 
 
 def shorten():
-    ori_url = input('Original URL: ')
+    i = 0
     alnum = string.ascii_lowercase + string.ascii_uppercase + string.digits
+    ori_url = input('Original URL: ')
     gen_char = random.choices(alnum, k=6)
     short_url = ''.join(gen_char)
 
     # if key exists in dict, pass; otherwise, add key-value pair to dict
-
-    if short_url in url_dict.keys():
+    # limit length of characters between 5 ('http...') and 2048 (the maximum length of a URL)
+    if len(ori_url) > 2048 or len(ori_url) < 5:
+        print("Invalid URL")
+    elif short_url in url_dict.keys():
         pass
     else:
         url_dict[short_url] = ori_url
+        i += 1
+    print("The short version is: " + short_url)
 
 
 def restore():
     short_url = input('Shorten URL: ')
-    if short_url not in url_dict.keys():
+    if len(short_url) != 6 or short_url not in url_dict.keys():
+        print("Invalid shortened URL")
         return None
     else:
         print("The original URL is: " + url_dict[short_url])
 
 
-# alnum = string.ascii_lowercase + string.ascii_uppercase + string.digits
-#
-# for i in range(2):
-#     ori_url = input('Original URL: ')
-#     gen_char = random.choices(alnum, k=6)
-#     short_url = ''.join(gen_char)
-#
-# # if key exists in dict, pass; otherwise, add key-value pair to dict
-#
-#     if short_url in url_dict.keys():
-#         pass
-#     else:
-#         url_dict[short_url] = ori_url
-#     print(short_url)
-#     print(url_dict)
-#
-#
-# short_url = input('Shorten URL: ')
-# if short_url not in url_dict.keys():
-#     print("No url available")
-# else:
-#     print("The original URL is: " + url_dict[short_url])
+shorten()
+restore()
